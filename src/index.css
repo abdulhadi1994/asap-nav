@@ -69,4 +69,18 @@
     padding: 12px 12px;
     border-radius: 2px;
   }
+
+  .circle{
+    background-color: #199cdb;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+  }
+
+  .circle__inital{
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+  }
 }

@@ -12,14 +12,14 @@ import NavSkeleton from "./ui/NavSkeleton.jsx";
 
 const Nav = () => {
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     onAuthStateChanged(auth, (users) => {
       if (users) {
         setUser(users);
       }
-      setLoading(false)
+      setLoading(false);
     });
   }, []);
 
@@ -37,7 +37,6 @@ const Nav = () => {
       .catch((error) => console.log(error));
   }
 
-
   return (
     <nav className="nav">
       <div className="nav__container">
@@ -47,14 +46,20 @@ const Nav = () => {
           </a>
         </div>
         <div className="nav__right">
-          <div className="nav__links">
-            <a className="nav__link" onClick={() => logIn()} >
-              Login
-            </a>
-            <button className="nav__link__btn" onClick={() => signUp()}>
-              Get Started
+          {user.name ? (
+            <button className="circle" onClick={() => signUp()}>
+              <span className="circle__inital">H</span>{" "}
             </button>
-          </div>
+          ) : (
+            <div className="nav__links">
+              <a className="nav__link" onClick={() => logIn()}>
+                Login
+              </a>
+              <button className="nav__link__btn" onClick={() => signUp()}>
+                Get Started
+              </button>
+            </div>
+          )}
         </div>
       </div>
       {loading ? "Loading..." : user.email}
