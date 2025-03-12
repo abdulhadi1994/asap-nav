@@ -37,6 +37,11 @@ const Nav = () => {
       .catch((error) => console.log(error));
   }
 
+  function logOut(){
+    signOut(auth)
+    .then (() => {setUser({})})
+  }
+
   return (
     <nav className="nav">
       <div className="nav__container">
@@ -46,23 +51,20 @@ const Nav = () => {
           </a>
         </div>
         <div className="nav__right">
-          {user.name ? (
-            <button className="circle" onClick={() => signUp()}>
-              <span className="circle__inital">H</span>{" "}
-            </button>
-          ) : (
-            <div className="nav__links">
+          {user.email ? (
+            <button className="circle" onClick={() => logOut()}>
+              <span className="circle__inital">{user.email.charAt(0)}</span>
+            </button>) : 
+            (<div className="nav__links">
               <a className="nav__link" onClick={() => logIn()}>
                 Login
               </a>
               <button className="nav__link__btn" onClick={() => signUp()}>
                 Get Started
               </button>
-            </div>
-          )}
+            </div>)}
         </div>
       </div>
-      {loading ? "Loading..." : user.email}
     </nav>
   );
 };
