@@ -12,7 +12,7 @@ import NavSkeleton from "./ui/NavSkeleton.jsx";
 
 const Nav = () => {
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     onAuthStateChanged(auth, (users) => {
@@ -37,9 +37,10 @@ const Nav = () => {
       .catch((error) => console.log(error));
   }
 
-  function logOut(){
-    signOut(auth)
-    .then (() => {setUser({})})
+  function logOut() {
+    signOut(auth).then(() => {
+      setUser({});
+    });
   }
 
   return (
@@ -51,18 +52,20 @@ const Nav = () => {
           </a>
         </div>
         <div className="nav__right">
-          {user.email ? (
+          {loading ? <NavSkeleton/> : (user.email ? (
             <button className="circle" onClick={() => logOut()}>
               <span className="circle__inital">{user.email.charAt(0)}</span>
-            </button>) : 
-            (<div className="nav__links">
+            </button>
+          ) : (
+            <div className="nav__links">
               <a className="nav__link" onClick={() => logIn()}>
                 Login
               </a>
               <button className="nav__link__btn" onClick={() => signUp()}>
                 Get Started
               </button>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
     </nav>
