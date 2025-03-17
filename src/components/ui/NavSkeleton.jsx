@@ -8,7 +8,7 @@ const NavSkeleton = () => {
       <div className="nav__right">
         <div className="nav__links">
           <div className="skeleton nav__link--skeleton"></div>
-          <div className="skeleton nav__link__btn--skeleton"></div>
+          <div className="skeleton nav__link--skeleton"></div>
         </div>
       </div>
     </>

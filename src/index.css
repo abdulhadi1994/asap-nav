@@ -92,7 +92,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .skeleton::after {
     content: "";
     position: absolute;
@@ -110,7 +110,7 @@
     animation: shimmer 1.2s infinite;
     transform: translateX(-100%);
   }
-  
+
   @keyframes shimmer {
     100% {
       transform: translateX(100%);
@@ -118,12 +118,8 @@
   }
 
   .nav__link--skeleton {
-    width: 100%;
-    border-radius: 4px;
-    aspect-ratio: 1.2 / 1;
-  }
-  .nav__link__btn--skeleton {
-    width: 100%;
+    width: 100px;
+    height: 40px;
     border-radius: 4px;
     aspect-ratio: 1.2 / 1;
   }
